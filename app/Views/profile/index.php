@@ -25,7 +25,8 @@
                         <h3 class="card-title mb-0">Tabel Data Profil</h3>
                     </div>
                     <div class="card-body table-responsive p-0">
-                        <table class="table table-bordered table-hover text-nowrap mb-0 text-center">
+                        <table id="profilTable" class="table table-bordered table-hover
+                        text-nowrap mb-0 text-center">
                             <thead class="thead-dark">
                                 <tr>
                                     <th width="90">Foto</th>
@@ -84,5 +85,34 @@ btn-sm btn-danger" title="Hapus"
         </div>
     </div>
 </section>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        $('#profilTable').DataTable({
+            pageLength: 5,
+            responsive: true,
+            autoWidth: false,
+            dom: 'Bfrtip', // Ini bagian penting!
+            buttons: [{
+                    extend: 'copy',
+                    text: 'Salin'
+                },
+                {
+                    extend: 'excel',
+                    text: 'Unduh Excel'
+                },
+                {
+                    extend: 'pdf',
+                    text: 'Unduh PDF'
+                },
+                {
+                    extend: 'print',
+                    text: 'Cetak'
+                }
+            ],
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/id.json"
+            }
+        });
+    });
+</script>
 <?= $this->endSection() ?>
